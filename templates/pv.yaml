@@ -10,5 +10,5 @@ spec:
   claimRef:
     name: {{ template "jenkins.fullname" . }}
   hostPath:
-    path: /root/data/jenkins
-  storageClassName: standard
+    path: "/root/data/jenkins"
+  storageClassName: "{{ .Values.Persistence.StorageClass }}"
