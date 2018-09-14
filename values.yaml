@@ -46,7 +46,7 @@ Master:
   ServicePort: 8080
   # For minikube, set this to NodePort, elsewhere use LoadBalancer
   # Use ClusterIP if your setup includes ingress controller
-  ServiceType: LoadBalancer
+  ServiceType: ClusterIP
   # Master Service annotations
   ServiceAnnotations: {}
   #   service.beta.kubernetes.io/aws-load-balancer-backend-protocol: https
@@ -127,9 +127,9 @@ Master:
     # kubernetes.io/tls-acme: "true"
 
     TLS:
-    # - secretName: jenkins.cluster.local
-    #   hosts:
-    #     - jenkins.cluster.local
+     - secretName: jenkins.codeforfun.cn-secret
+       hosts:
+         - jenkins.codeforfun.cn
 
 Agent:
   Enabled: true
@@ -177,7 +177,7 @@ Persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  # StorageClass: "-"
+  StorageClass: "standard"
 
   Annotations: {}
   AccessMode: ReadWriteOnce

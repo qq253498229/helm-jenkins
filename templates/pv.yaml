@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ template "jenkins.fullname" . }}
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 8Gi
+  claimRef:
+    name: {{ template "jenkins.fullname" . }}
+  hostPath:
+    path: /root/data/jenkins
+  storageClassName: standard
